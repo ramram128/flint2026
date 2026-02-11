@@ -1,0 +1,533 @@
+/* === Global Reset === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 🎨 HIGH-QUALITY BACKGROUND APPLIED TO BODY 🎨 */
+body {
+  font-family: 'Poppins', sans-serif;
+  /* IMPORTANT: Update the path to your saved background image! */
+  background-image: url('/home-back.png');
+  /* Added a fallback gradient that matches the theme in case the image fails to load */
+  background-color: #4b0082; 
+  background-size: cover; /* Ensures the image covers the entire viewport */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background-attachment: fixed; /* Keeps the background still when scrolling */
+  /* Set default text color to white/light for contrast against the dark background */
+  color: #fff; 
+  overflow-y: auto; 
+  min-height: 100vh; 
+}
+
+/* === Shared Container for All Pages === */
+.container,
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* ... other styles ... */
+  background: none; 
+  /* CHANGE THIS LINE: Use min-height to allow growth beyond viewport */
+  min-height: calc(100vh - 60px); 
+  /* REMOVE the fixed height: height: calc(100vh - 60px); */
+  margin-top: 0px; 
+  /* ... other styles ... */
+}
+
+/* === Navbar === */
+.navbar {
+  width: 100%;
+  /* Semi-transparent dark background so the body background shows through */
+  background: rgba(0, 0, 0, 0.4); 
+  color: white; /* Changed to white for contrast */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 1.25rem 0.2rem 0.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.nav-left button {
+    background: transparent;
+    color: white;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.nav-left button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-center {
+  display: flex; /* Make it a flex container */
+  justify-content: center; /* Center the topic-container horizontally */
+  /* flex-grow: 1; Allow it to take up available space */
+}
+
+/* .topic {
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 5px 5px 0 #ff005e ,10px 10px 0 #00d4ff;
+  animation: topic 3s infinite;
+
+} */
+
+.topic {
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 5px 5px 0 #ff0000 ,10px 10px 0 #00d4ff;
+  animation: topic 1.3s infinite;
+  /* Add this to allow the slogan to align relative to its width */
+  width: max-content; 
+}
+
+/* NEW: This wraps the h2 and the span for collective centering */
+.topic-container {
+  display: flex;
+  flex-direction: column; /* Stack the topic and slogan vertically */
+  align-items: flex-start; /* Center them horizontally within the container */
+  /* Remove this line if you want it left-aligned instead of centered: align-items: flex-start; */
+  position: relative; /* Essential for aligning the slogan relative to the topic */
+  margin: 0 auto; 
+}
+
+.slogan {
+  color: #ffd700; /* A bright, contrasting color */
+  font-size: 0.5rem; /* Keep it minimal */
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: -8px; /* Pull it closer to the topic */
+  
+  margin-top: -10px; 
+  margin-left: 19%;
+}
+
+
+.hero {
+
+  background: #ffffff; 
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Darker shadow for visibility */
+  padding: 2rem 3rem;
+  max-width: 400px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.hero-banner {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  display: block; 
+
+  object-fit: cover;
+  filter: brightness(100%) contrast(110%);
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.hero-banner:hover img {
+  transform: scale(1.05);
+  filter: brightness(110%) contrast(100%);
+}
+
+.hero:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+.hero h1 {
+  /* Keep content color dark for contrast against the white hero box */
+  color: #0d47a1; 
+  font-size: 2.3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  color: #0e60db;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* === Register Button (Under Hero Box) === */
+.button-group {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  /* Retain your base sizing and font styles */
+  position: relative; /* ESSENTIAL for span positioning */
+  display: inline-block;
+  padding: 0.75rem 1.5rem; /* Your desired padding */
+  font-weight: 600; /* Your desired font weight */
+  border: none; /* REMOVE your solid border */
+  border-radius: 8px; /* Your desired border-radius */
+  cursor: pointer;
+  filter: brightness(200%);
+  
+  /* Apply the Neon Style Properties */
+  color: #00ffe1; /* Neon text color */
+  background:rgba(255, 255, 255, 0.312); /* Neon background is transparent */
+  text-decoration: none; /* Ensure it looks clean */
+  text-transform: uppercase; /* Use the uppercase style */
+  transition: 0.5s;
+  letter-spacing: 2px; /* Slightly adjust letter spacing for effect */
+  overflow: hidden; /* ESSENTIAL to hide the starting position of the lines */
+}
+
+/* The Neon Glow Hover Effect */
+.button:hover {
+  background: #03e9f4; /* Neon background on hover */
+  color: #050801; /* Dark text on hover for contrast */
+  /* Neon box shadow on hover */
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+  transform: scale(1.05); /* Retain your scale transform */
+}
+
+/* Base style for the border lines */
+.button span {
+  position: absolute;
+  display: block;
+}
+
+/* Line 1: Top (Left to Right) */
+.button span:nth-child(1) {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ffffff);
+  animation: animate1 1s linear infinite;
+}
+
+/* Line 2: Right (Top to Bottom) */
+.button span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #ffffff);
+  animation: animate2 1s linear infinite;
+  animation-delay: 0.25s;
+}
+
+/* Line 3: Bottom (Right to Left) */
+.button span:nth-child(3) {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(270deg, transparent, #ffffff);
+  animation: animate3 1s linear infinite;
+  animation-delay: 0.5s;
+}
+
+/* Line 4: Left (Bottom to Top) */
+.button span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #ffffff);
+  animation: animate4 1s linear infinite;
+  animation-delay: 0.75s;
+}
+
+/* Keyframes (keep these exactly as in the target CSS) */
+
+@keyframes animate1 {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
+}
+
+@keyframes animate2 {
+  0% { top: -100%; }
+  50%, 100% { top: 100%; }
+}
+
+@keyframes animate3 {
+  0% { right: -100%; }
+  50%, 100% { right: 100%; }
+}
+
+@keyframes animate4 {
+  0% { bottom: -100%; }
+  50%, 100% { bottom: 100%; }
+}
+
+/* === HOME PAGE NEW THEME === */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Removed conflicting background and min-height */
+  padding: 0rem;
+}
+
+.home-hero {
+  display: flex;
+  flex-direction: row;
+  /* Slightly transparent white card to let the background color show through subtly */
+  background: #ffffff00; 
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  max-width: 1000px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-hero:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Image section */
+.home-image {
+  flex: 1;
+  height: auto; 
+  padding: 20px;
+  overflow: hidden;
+}
+
+.home-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+  border-right: 2px solid rgba(0,0,0,0.05);
+}
+
+.home-image img:hover {
+  transform: scale(1.05);
+}
+
+/* Button section */
+.home-button-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+  /* This gradient matches the color scheme of the background image */
+  background: linear-gradient(180deg, #ffffff63, #9e58e800); 
+  border-left: 2px solid rgba(0,0,0,0.05);
+  border-radius: 0 20px 20px 0;
+}
+
+.home-nav-button {
+  background: white;
+  color: #2575fc;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  width: 70%;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.home-nav-button:hover {
+  background: #bf00ff;
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* === Responsive Design === */
+@media (max-width: 900px) {
+  .home-hero {
+    flex-direction: column;
+    /* gap: 20px;  */
+    width: 95%; /* Give it a max-width a little less than 100% */
+    max-width: 500px; /* Constrain the width on smaller screens */
+    margin: 0 auto;
+
+  }
+
+  .home-image {
+    /* height: 300px; */
+    border-right: none;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .home-button-group {
+    border-left: none;
+    border-radius: 0 0 20px 20px;
+    padding: 1.5rem;
+    width: 100%;
+    align-items: center; /* This is already there, but confirm */
+    justify-content: center;
+  }
+
+  .home-nav-button {
+    width: 80%;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-image {
+    height: 220px;
+  }
+
+  .home-nav-button {
+    width: 90%;
+    font-size: 0.95rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* === HOME HERO TEXT (Optional, if you use heading above buttons) */
+.home-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.home-hero h1 {
+  color: #0d47a1;
+  text-align: center;
+}
+
+.home-hero p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* === Other responsive fixes for banner images */
+@media (max-width: 768px) {
+  .hero-banner img {
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .hero-banner {
+    box-shadow: none;
+  }
+}
+
+@keyframes topic {
+  0% ,100%{
+    text-shadow: 0px 0px 0 #ff005e ,0px 0px 0 #00d4ff;
+  }
+  50%{
+    text-shadow: -4px -4px 0 #00d4ff ,-6px -6px 0 #ff005e;
+  }
+}
+
+.college-name-banner {
+  color: #fff;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  padding: 12px 25px;
+    
+  /* --- Background Image Properties --- */
+  
+  /* CORRECTED: The background shorthand should define layers (color and image) */
+    /* 1. The semi-transparent dark-purple color overlay */
+    background-image: 
+    linear-gradient(rgba(152, 129, 174, 0.7), rgba(152, 129, 174, 0.7)),
+    url("/collage-banner.png"); 
+    
+  /* CORRECTED: background-size must be defined separately to apply to the image layer */
+  background-size: cover; 
+  background-attachment: fixed; /* Ensures the background image stays fixed during scroll */
+  background-repeat: no-repeat;
+  background-position: center; /* Centers the image for a better visual focus */
+  background-blend-mode: overlay; /* Blends the color overlay with the image */
+
+  /* background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));  */
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(191, 0, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  max-width: 90%;
+  width: fit-content;
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.8), 0 0 4px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: pulse 2s infinite alternate;
+}
+.college-name-banner h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin: 0;
+  color: #fff;
+  text-transform: uppercase;
+}
+@keyframes pulse {
+    from { transform: scale(1); box-shadow: 0 0 20px rgba(191, 0, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.2); }
+    to { transform: scale(1.02); box-shadow: 0 0 30px rgba(191, 0, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.4); }
+}
+
+  #contact {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(180deg, #ffffff63, #9e58e800);
+    border-radius: 20px;
+    margin-top: 20px;
+  }
+
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* space between them */
+    flex-wrap: wrap; /* responsive for mobile */
+    margin-top: 10px;
+  }
+
+  .contact-item {
+    font-size: 18px;
+    padding: 10px 15px;
+    border: px solid #8e888818;
+    border-radius: 8px;   /* Added */
+    margin-top: 2px; 
+    margin-bottom: 10px;     /* Added */
+    background-color: #f9f9f936;
+  }
+
+  .contact-item a {
+    text-decoration: none;
+    color: #090a00;
+    font-weight: bold;
+
+  }
+
+  .contact-item a:hover {
+    text-decoration: underline;
+  }
